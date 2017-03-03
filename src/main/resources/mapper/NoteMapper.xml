@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.NoteMapper">
+  <resultMap id="BaseResultMap" type="model.Note">
+    <id column="note_id" jdbcType="INTEGER" property="noteId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="book_id" jdbcType="INTEGER" property="bookId" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="note_date" jdbcType="TIMESTAMP" property="noteDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    note_id, user_id, book_id, note, note_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from note
+    where note_id = #{noteId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from note
+    where note_id = #{noteId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="model.Note">
+    insert into note (note_id, user_id, book_id, 
+      note, note_date)
+    values (#{noteId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
+      #{note,jdbcType=VARCHAR}, #{noteDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="model.Note">
+    insert into note
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="noteId != null">
+        note_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="bookId != null">
+        book_id,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="noteDate != null">
+        note_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="noteId != null">
+        #{noteId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="noteDate != null">
+        #{noteDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="model.Note">
+    update note
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null">
+        book_id = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="noteDate != null">
+        note_date = #{noteDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where note_id = #{noteId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="model.Note">
+    update note
+    set user_id = #{userId,jdbcType=INTEGER},
+      book_id = #{bookId,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR},
+      note_date = #{noteDate,jdbcType=TIMESTAMP}
+    where note_id = #{noteId,jdbcType=INTEGER}
+  </update>
+</mapper>
