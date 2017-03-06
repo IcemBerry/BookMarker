@@ -10,5 +10,6 @@ import java.util.List;
 public interface UserService {
 
     User getUserByUserId(int userId);
+    User getUserByUserName(String userName);
     int insertUsersByUserList(List<User> userList);
 }

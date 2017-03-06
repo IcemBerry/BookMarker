@@ -26,7 +26,7 @@ public class ServiceTest {
 
     @Test
     public void mainTest(){
-        User user = userService.getUserByUserId(1);
+        User user = userService.getUserByUserId(5);
         logger.info(JSON.toJSONString(user));
     }
 
@@ -40,4 +40,11 @@ public class ServiceTest {
         userList.add(user);
         userService.insertUsersByUserList(userList);
     }
+
+    @Test
+    public void UserNameTest(){
+        User user = userService.getUserByUserName("jack");
+        System.out.println(user.getPassword());
+    }
+
 }

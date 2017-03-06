@@ -11,7 +11,7 @@
      http://www.springframework.org/schema/context/spring-context.xsd ">
 
     <!-- Package scan -->
-    <context:component-scan base-package="service"/>
+    <context:component-scan base-package="service,service.impl,controller"/>
 
     <!-- MUST be classpath*: -->
     <context:property-placeholder location="classpath*:db.properties"/>

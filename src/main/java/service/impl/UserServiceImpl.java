@@ -23,6 +23,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectByPrimaryKey(userId);
     }
 
+    @Override
+    public User getUserByUserName(String userName) {
+        return userMapper.selectByUserName(userName);
+    }
+
     @Transactional
     public int insertUsersByUserList(List<User> userList) {
         for (User user : userList) {
