@@ -6,3 +6,44 @@
     float: right;
     text-align: right;
 }
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+body{
+    margin-top: 70px;
+}
+
+thead{
+    text-align: center !important;
+}
+
+td{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table thead tr th{
+    text-align: center;
+}
+
+.table tbody tr{
+    height: 50px;
+}
+
+.table tbody tr td{
+    vertical-align: middle;
+}
+
+table tbody tr td .progress{
+    margin: 0px;
+}
+
+.bootstrap-table table thead tr th{
+    padding-bottom: 10px !important;
+}

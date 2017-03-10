@@ -47,20 +47,62 @@
     </div>
     <div class="col-md-10">
         <ul class="breadcrumb">
-            <li><a href="#">Library</a></li>
+            <li><a href="#">Progress</a></li>
         </ul>
     </div>
     <div class="col-md-10">
         <div class="well well-sm">
-            共检索到
+            检索到
             <mark>12</mark>
-            本书
+            本书的阅读进度,另有
+            <mark>3</mark>
+            本书已阅读完毕
         </div>
     </div>
-    <div class="col-md-10">
-        <div class="bootstrap-table">
-
-        </div>
+    <div class="col-md-10 bootstrap-table">
+        <section class="panel">
+            <table class="table table-striped table-advance table-hover">
+                <thead>
+                <tr>
+                    <th class="col-md-1"><i class="fa fa-tag fa-fw"></i> 编号</th>
+                    <th class="col-md-2 hidden-phone"><i class="fa fa-book fa-fw"></i> 书名</th>
+                    <th class="col-md-2"><i class="fa fa-inbox fa-fw"></i> 总页数</th>
+                    <th class="col-lg-5"><i class="fa fa-bookmark fa-fw"></i> 阅读进度</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><a href="#">Vector Ltd</a></td>
+                    <td>121 </td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 60%"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i>更新进度</button>
+                        <button class="btn btn-danger btn-xs"><i class="icon-trash "></i>完成</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="#">Vector Ltd</a></td>
+                    <td>121 </td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 60%"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i>更新进度</button>
+                        <button class="btn btn-danger btn-xs"><i class="icon-trash "></i>完成</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
     </div>
 </div>
 

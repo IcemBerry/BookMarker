@@ -11,7 +11,7 @@
     <!-- 通用样式表 -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap-table.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/goldbootstrap.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>

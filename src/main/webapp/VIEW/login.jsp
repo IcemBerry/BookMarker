@@ -11,7 +11,7 @@
     <!-- 通用样式表 -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap-table.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/goldbootstrap.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
@@ -26,7 +26,7 @@
 <div class="container">
     <div class="col-md-6 col-md-offset-3" id="loginBox">
         <div class="well bs-component">
-            <form class="form-horizontal" action="/user/login" method="post">
+            <form class="form-horizontal" action="/login" method="post">
                 <fieldset>
                     <legend>用户登录</legend>
                     <div class="form-group">
