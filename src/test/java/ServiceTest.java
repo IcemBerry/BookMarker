@@ -1,4 +1,3 @@
-import com.alibaba.fastjson.JSON;
 import model.User;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -27,7 +26,6 @@ public class ServiceTest {
     @Test
     public void mainTest(){
         User user = userService.getUserByUserId(5);
-        logger.info(JSON.toJSONString(user));
     }
 
     @Test

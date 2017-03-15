@@ -25,27 +25,9 @@ public class UserController {
 
     private static Logger logger = Logger.getLogger(UserController.class);
 
-    @RequestMapping("/showUser")
-    public String toIndex(HttpServletRequest request, Model model) {
-        int userId = Integer.parseInt(request.getParameter("id"));
-        User user = this.userService.getUserByUserId(userId);
-        model.addAttribute("user", user);
-        return "showUser";
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
         return "login";
-    }
-
-
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String indexPage(HttpSession session) {
-        User user = (User) session.getAttribute("user");
-        if (user != null) {
-            return "index";
-        }
-        return "redirect:login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)

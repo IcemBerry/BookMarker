@@ -13,6 +13,8 @@ public class Note {
 
     private String note;
 
+    private Integer notePage;
+
     public Integer getNoteId() {
         return noteId;
     }
@@ -51,5 +53,13 @@ public class Note {
 
     public void setNote(String note) {
         this.note = note == null ? null : note.trim();
+    }
+
+    public Integer getNotePage() {
+        return notePage;
+    }
+
+    public void setNotePage(Integer notePage) {
+        this.notePage = notePage;
     }
 }

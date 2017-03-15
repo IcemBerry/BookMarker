@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
+    @Deprecated
     public int insertUsersByUserList(List<User> userList) {
         for (User user : userList) {
             int affectedCount = userMapper.insert(user);

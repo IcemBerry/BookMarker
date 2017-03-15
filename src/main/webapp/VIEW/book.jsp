@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -46,21 +48,72 @@
         </ul>
     </div>
     <div class="col-md-10">
-        <ul class="breadcrumb">
-            <li><a href="#">Library</a></li>
-        </ul>
+        <ol class="breadcrumb">
+            <li><a href="/index">我的书库</a></li>
+            <li class="active">${book.bookName}</li>
+        </ol>
     </div>
-    <div class="col-md-10">
-        <div class="well well-sm">
-            共检索到
-            <mark>12</mark>
-            本书
-        </div>
-    </div>
-    <div class="col-md-10">
-        <div class="bootstrap-table">
 
+    <div class="col-md-4">
+        <img width="100%" height="100%" class="img-thumbnail" src="/assets/cover/${book.bookId}.jpg">
+    </div>
+    <div class="col-md-6">
+        <table class="table table-bordered col-md-12">
+            <tr>
+                <td>编号</td>
+                <td>${book.bookId}</td>
+            </tr>
+            <tr>
+                <td>书名</td>
+                <td>${book.bookName}</td>
+            </tr>
+            <tr>
+                <td>作者</td>
+                <td>${book.bookAuthor}</td>
+            </tr>
+            <tr>
+                <td>页数</td>
+                <td>${book.bookPage}</td>
+            </tr>
+            <tr>
+                <td>备注</td>
+                <td>${book.bookNote}</td>
+            </tr>
+        </table>
+
+        <div class="col-md-12 well well-sm">
+            <p>阅读进度：${progress.progress}/${book.bookPage}</p>
+            <div class="progress" style="margin: 10px 0px 10px">
+                <div class="progress-bar" role="progressbar" aria-valuenow="${progressPercent}" aria-valuemin="0"
+                     aria-valuemax="100"
+                     style="width: ${progressPercent}%">${progressPercent}%
+                </div>
+            </div>
+            <p class="text-right">进度更新时间:
+                <ins><fmt:formatDate value="${progress.progressDate}" pattern="yyyy-MM-dd HH:mm"/></ins>
+            </p>
         </div>
+
+        <table class="col-md-12 table table-bordered">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>位置</th>
+                <th>标注日期</th>
+                <th>摘录内容（节选）</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${noteList}" var="note" varStatus="status">
+                <tr>
+                    <td>${status.index+1}</td>
+                    <td>${note.notePage}</td>
+                    <td><fmt:formatDate value="${note.noteDate}" pattern="yyyy年MM月dd日 HH:mm"/></td>
+                    <td>${note.note}</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
 </div>
 

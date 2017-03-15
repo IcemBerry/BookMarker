@@ -7,10 +7,24 @@
     <result column="book_id" jdbcType="INTEGER" property="bookId" />
     <result column="note_date" jdbcType="TIMESTAMP" property="noteDate" />
     <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="note_page" javaType="INTEGER" property="notePage" />
   </resultMap>
   <sql id="Base_Column_List">
-    note_id, user_id, book_id, note_date, note
+    note_id, user_id, book_id, note_date, note, note_page
   </sql>
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from note
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserIdAndBookId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from note
+    where user_id = #{userId,jdbcType=INTEGER}
+    and book_id = #{bookId,jdbcType=INTEGER}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

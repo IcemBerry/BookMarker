@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -38,24 +40,24 @@
 <div class="container">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/index">我的书库</a></li>
-            <li><a href="/progress">阅读进度</a></li>
+            <li><a href="/index">我的书库</a></li>
+            <li class="active"><a href="/progress">阅读进度</a></li>
             <li><a href="/analysis">阅读分析</a></li>
             <li><a href="/note">阅读笔记</a></li>
             <li><a href="/about">关于BM</a></li>
         </ul>
     </div>
     <div class="col-md-10">
-        <ul class="breadcrumb">
-            <li><a href="#">Progress</a></li>
-        </ul>
+        <ol class="breadcrumb">
+            <li class="active">阅读进度</li>
+        </ol>
     </div>
     <div class="col-md-10">
         <div class="well well-sm">
             检索到
-            <mark>12</mark>
-            本书的阅读进度,另有
-            <mark>3</mark>
+            <mark>${progressList.size()}</mark>
+            本书的阅读进度，其中
+            <mark>${done}</mark>
             本书已阅读完毕
         </div>
     </div>
@@ -64,42 +66,35 @@
             <table class="table table-striped table-advance table-hover">
                 <thead>
                 <tr>
-                    <th class="col-md-1"><i class="fa fa-tag fa-fw"></i> 编号</th>
-                    <th class="col-md-2 hidden-phone"><i class="fa fa-book fa-fw"></i> 书名</th>
-                    <th class="col-md-2"><i class="fa fa-inbox fa-fw"></i> 总页数</th>
-                    <th class="col-lg-5"><i class="fa fa-bookmark fa-fw"></i> 阅读进度</th>
-                    <th></th>
+                    <th class="col-md-2"><i class="fa fa-book fa-fw"></i> 书名</th>
+                    <th class="col-md-1"><i class="fa fa-info fa-fw"></i> 总页</th>
+                    <th class="col-md-1"><i class="fa fa-bookmark fa-fw"></i> 当前</th>
+                    <th class="col-md-2"><i class="fa fa-calendar fa-fw"></i> 更新时间</th>
+                    <th class="col-md-4"><i class="fa fa-check fa-fw"></i> 阅读进度</th>
+                    <th class="col-md-2"><i class="fa fa-edit fa-fw"></i> 操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#">Vector Ltd</a></td>
-                    <td>121 </td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 60%"></div>
-                        </div>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i>更新进度</button>
-                        <button class="btn btn-danger btn-xs"><i class="icon-trash "></i>完成</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><a href="#">Vector Ltd</a></td>
-                    <td>121 </td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 60%"></div>
-                        </div>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i>更新进度</button>
-                        <button class="btn btn-danger btn-xs"><i class="icon-trash "></i>完成</button>
-                    </td>
-                </tr>
+                <c:forEach items="${progressList}" var="progress">
+                    <tr>
+                        <td><a href="/book?bookId=${progress.bookId}">${progress.book.bookName}</a></td>
+                        <td>${progress.book.bookPage}</td>
+                        <td>${progress.progress}</td>
+                        <td><fmt:formatDate value="${progress.progressDate}" pattern="yyyy-MM-dd"/></td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar"role="progressbar" aria-valuenow="<fmt:formatNumber type="number" value="${progress.progress/progress.book.bookPage*100}" maxFractionDigits="0"/>"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: <fmt:formatNumber type="number" value="${progress.progress/progress.book.bookPage*100}" maxFractionDigits="0"/>%">
+                                    <fmt:formatNumber type="number" value="${progress.progress/progress.book.bookPage*100}" maxFractionDigits="0"/>%
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i>更新进度</button>
+                            <button class="btn btn-danger btn-xs"><i class="icon-trash "></i>完成</button>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </section>

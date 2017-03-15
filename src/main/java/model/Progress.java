@@ -11,6 +11,8 @@ public class Progress {
 
     private Integer progress;
 
+    private Book book;
+
     public Integer getBookId() {
         return bookId;
     }
@@ -41,5 +43,13 @@ public class Progress {
 
     public void setProgress(Integer progress) {
         this.progress = progress;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 }

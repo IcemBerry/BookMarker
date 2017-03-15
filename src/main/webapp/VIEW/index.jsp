@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -14,12 +16,14 @@
     <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
 
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
+
 </head>
 
 <body>
@@ -46,21 +50,42 @@
         </ul>
     </div>
     <div class="col-md-10">
-        <ul class="breadcrumb">
-            <li><a href="#">Library</a></li>
-        </ul>
+        <ol class="breadcrumb">
+            <li class="active">我的书库</li>
+        </ol>
     </div>
     <div class="col-md-10">
         <div class="well well-sm">
             共检索到
-            <mark>12</mark>
+            <mark>${fn:length(bookList)}</mark>
             本书
         </div>
     </div>
-    <div class="col-md-10">
-        <div class="bootstrap-table">
 
-        </div>
+    <div class="col-md-10">
+        <table class="table table-bordered" id="indexBookTable">
+            <caption id="toolbar"></caption>
+            <thead>
+            <tr>
+                <th data-field="bookId">序号</th>
+                <th data-field="bookName">书名</th>
+                <th data-field="bookAuthor">作者</th>
+                <th data-field="bookPage">页数</th>
+                <th data-field="bookNote">备注</th>
+            </tr>
+            </thead>
+            <%--<tbody>--%>
+            <%--<c:forEach items="${bookList}" var="book" varStatus="status">--%>
+            <%--<tr>--%>
+            <%--<td>${status.index+1}</td>--%>
+            <%--<td><a href="/book?bookId=${book.bookId}">${book.bookName}</a></td>--%>
+            <%--<td>${book.bookAuthor}</td>--%>
+            <%--<td>${book.bookPage}</td>--%>
+            <%--<td>${book.bookNote}</td>--%>
+            <%--</tr>--%>
+            <%--</c:forEach>--%>
+            <%--</tbody>--%>
+        </table>
     </div>
 </div>
 

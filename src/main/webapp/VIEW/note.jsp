@@ -1,3 +1,5 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -38,10 +40,10 @@
 <div class="container">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/index">我的书库</a></li>
+            <li><a href="/index">我的书库</a></li>
             <li><a href="/progress">阅读进度</a></li>
             <li><a href="/analysis">阅读分析</a></li>
-            <li><a href="/note">阅读笔记</a></li>
+            <li class="active"><a href="/note">阅读笔记</a></li>
             <li><a href="/about">关于BM</a></li>
         </ul>
     </div>
@@ -53,18 +55,47 @@
     <div class="col-md-10">
         <div class="well well-sm">
             共检索到
-            <mark>12</mark>
-            本书
+            <mark>${fn:length(noteList)}</mark>
+            本书的笔记
         </div>
     </div>
     <div class="col-md-10">
-        <div class="bootstrap-table">
-
-        </div>
+        <c:forEach items="${noteList}" var="noteDTO" varStatus="status">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a href="/book?bookId=${noteDTO.book.bookId}"><h5>${noteDTO.book.bookName}</h5></a>
+                </div>
+                <%--<div class="panel-body">--%>
+                    <%--<p>${noteDTO.book.bookNote}</p>--%>
+                <%--</div>--%>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="col-md-1">序号</th>
+                        <th class="col-md-1">位置</th>
+                        <th class="col-md-10">笔记</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${noteDTO.noteList}" var="note" varStatus="status">
+                        <tr>
+                            <td>${status.index+1}</td>
+                            <td>${note.notePage}</td>
+                            <td>${note.note}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <div class="panel-footer">
+                    <button class="btn btn-primary btn-sm">管理</button>
+                    <button class="btn btn-success btn-sm">添加</button>
+                </div>
+            </div>
+        </c:forEach>
     </div>
 </div>
 
-<footer class="footer">
+<footer class="footer" style="margin-top: 50px;padding: 10px 0">
     <div class="container">
         <p class="text-muted">Place sticky footer content here.</p>
     </div>
