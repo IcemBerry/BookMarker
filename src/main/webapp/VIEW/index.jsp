@@ -17,12 +17,14 @@
 
     <!-- 通用动态脚本 -->
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>--%>
+    <%--<script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.js"></script>--%>
 
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/assets/js/index.js"></script>--%>
 
 </head>
 
@@ -64,7 +66,6 @@
 
     <div class="col-md-10">
         <table class="table table-bordered" id="indexBookTable">
-            <caption id="toolbar"></caption>
             <thead>
             <tr>
                 <th data-field="bookId">序号</th>
@@ -74,17 +75,17 @@
                 <th data-field="bookNote">备注</th>
             </tr>
             </thead>
-            <%--<tbody>--%>
-            <%--<c:forEach items="${bookList}" var="book" varStatus="status">--%>
-            <%--<tr>--%>
-            <%--<td>${status.index+1}</td>--%>
-            <%--<td><a href="/book?bookId=${book.bookId}">${book.bookName}</a></td>--%>
-            <%--<td>${book.bookAuthor}</td>--%>
-            <%--<td>${book.bookPage}</td>--%>
-            <%--<td>${book.bookNote}</td>--%>
-            <%--</tr>--%>
-            <%--</c:forEach>--%>
-            <%--</tbody>--%>
+            <tbody>
+            <c:forEach items="${bookList}" var="book" varStatus="status">
+            <tr>
+            <td>${status.index+1}</td>
+            <td><a href="/book?bookId=${book.bookId}">${book.bookName}</a></td>
+            <td>${book.bookAuthor}</td>
+            <td>${book.bookPage}</td>
+            <td>${book.bookNote}</td>
+            </tr>
+            </c:forEach>
+            </tbody>
         </table>
     </div>
 </div>

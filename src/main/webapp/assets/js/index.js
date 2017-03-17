@@ -2,47 +2,34 @@
  * Created by cacri on 2017/3/10.
  */
 $(document).ready(function () {
-    // $.ajax({
-    //     type:'post',
-    //     url:'/index',
-    //     dataType: 'json',
-    //     success: function(_json) {
-    //
-    //     }
-    // });
-    initTable();
+    $.ajax({
+        type:'post',
+        url:'/index',
+        dataType: 'json',
+        success: function(json) {
+            initTable(json);
+        }
+    });
 });
 
-function initTable() {
+function initTable(json) {
     // $('#indexBookTable').bootstrapTable('refresh');
     $('#indexBookTable').bootstrapTable({
-        url: "/index",
-        method: 'post',
-        dataField: 'bookList',
-        dataType: 'json',
-        columns:[{
-            field: 'bookId',
-            title: '序号'
-        },{
-            field: 'bookName',
-            title: '书名'
-        },{
-            field: 'bookAuthor',
-            title: '作者'
-        },{
-            field: 'bookPage',
-            title: '页数'
-        },{
-            field: 'bookNote',
-            title: '备注'
-        }],
+        // url: "/index",
+        // method: 'post',
+        // dataField: 'bookList',
+        // dataType: 'json',
+        // classes:'col-md-10',
+        data:json.bookList,
+        search:true,
         // toolbar: '#toolbar',
-        // striped: true,
-        // cache: false,
-        // pagination: true,
-        // sidePagination: "server",
-        // pageNumber: 1,
-        // pageSize: 5,
-        // pageList: [10, 25, 50, 100]
+        // silentSort:false,
+        cache: false,
+        pagination: true,
+        sidePagination: 'server',
+        pageList:[2,5,10],
+        minimumCountColumns:2,
+        pageSize:2,
+        formatDetailPagination:'显示 %s 行'
     });
 }

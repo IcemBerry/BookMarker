@@ -15,6 +15,8 @@ public class Note {
 
     private Integer notePage;
 
+    private Book book;
+
     public Integer getNoteId() {
         return noteId;
     }
@@ -61,5 +63,13 @@ public class Note {
 
     public void setNotePage(Integer notePage) {
         this.notePage = notePage;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
     }
 }

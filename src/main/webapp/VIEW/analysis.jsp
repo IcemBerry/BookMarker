@@ -14,12 +14,13 @@
     <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/echarts.common.min.js"></script>
 
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/assets/js/analysis.js"></script>
 </head>
 
 <body>
@@ -38,9 +39,9 @@
 <div class="container">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/index">我的书库</a></li>
+            <li><a href="/index">我的书库</a></li>
             <li><a href="/progress">阅读进度</a></li>
-            <li><a href="/analysis">阅读分析</a></li>
+            <li class="active"><a href="/analysis">阅读分析</a></li>
             <li><a href="/note">阅读笔记</a></li>
             <li><a href="/about">关于BM</a></li>
         </ul>
@@ -53,22 +54,32 @@
     <div class="col-md-10">
         <div class="well well-sm">
             共检索到
-            <mark>12</mark>
+            <mark id="bookNum">12</mark>
             本书
         </div>
     </div>
     <div class="col-md-10">
-        <div class="bootstrap-table">
+        <div class="well well-sm">
+            共检索到
+            <mark id="noteNum">12</mark>
+            条笔记
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div id="ReadTime" style="width: 100%; height: 300px">
+
+        </div>
+        <div id="NoteTime" style="width: 100%; height: 300px">
 
         </div>
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-    </div>
-</footer>
+<%--<footer class="footer">--%>
+    <%--<div class="container">--%>
+        <%--<p class="text-muted">Place sticky footer content here.</p>--%>
+    <%--</div>--%>
+<%--</footer>--%>
 
 </body>
 </html>

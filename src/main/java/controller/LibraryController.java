@@ -40,25 +40,25 @@ public class LibraryController {
                 Book book = bookService.getBookByBookId(library.getBookId());
                 bookList.add(book);
             }
-//            model.addAttribute("bookList", bookList);
+            model.addAttribute("bookList", bookList);
             return "index";
         }
         return "redirect:login";
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/index", method = RequestMethod.POST)
-    public Map<String, Object> getLibrary(HttpSession session) {
-        System.out.println("IN USEING...");
-        Map<String, Object> map = new HashMap<String, Object>();
-        User user = (User) session.getAttribute("user");
-        List<Library> libraryList = libraryService.getUserLibraryByUser(user);
-        List<Book> bookList = new ArrayList<Book>();
-        for (Library library : libraryList) {
-            Book book = bookService.getBookByBookId(library.getBookId());
-            bookList.add(book);
-        }
-        map.put("bookList",bookList);
-        return map;
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "/index", method = RequestMethod.POST)
+//    public Map<String, Object> getLibrary(HttpSession session) {
+//        System.out.println("IN USEING...");
+//        Map<String, Object> map = new HashMap<String, Object>();
+//        User user = (User) session.getAttribute("user");
+//        List<Library> libraryList = libraryService.getUserLibraryByUser(user);
+//        List<Book> bookList = new ArrayList<Book>();
+//        for (Library library : libraryList) {
+//            Book book = bookService.getBookByBookId(library.getBookId());
+//            bookList.add(book);
+//        }
+//        map.put("bookList",bookList);
+//        return map;
+//    }
 }
