@@ -1,48 +1,81 @@
-#loginBox{
+#loginBox {
     margin-top: 7%;
 }
-#indexUserInfo{
+
+#indexUserInfo {
     background: #222222;
     float: right;
     text-align: right;
+}
+
+thead {
+    text-align: center !important;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table thead tr th {
+    text-align: center;
+}
+
+.table tbody tr {
+    height: 50px;
+}
+
+.table tbody tr td {
+    vertical-align: middle;
+}
+
+table tbody tr td .progress {
+    margin: 0px;
+}
+
+.bootstrap-table table thead tr th {
+    padding-bottom: 10px !important;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-top: 70px;
+    margin-bottom: 60px;
 }
 
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    /* Set the fixed height of the footer here */
     height: 60px;
     background-color: #f5f5f5;
 }
-body{
-    margin-top: 70px;
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+/*body > .container {*/
+    /*padding: 60px 15px 0;*/
+/*}*/
+
+.container .text-muted {
+    margin: 20px 0;
 }
 
-thead{
-    text-align: center !important;
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
 }
 
-td{
-    text-align: center;
-    vertical-align: middle;
-}
-
-.table thead tr th{
-    text-align: center;
-}
-
-.table tbody tr{
-    height: 50px;
-}
-
-.table tbody tr td{
-    vertical-align: middle;
-}
-
-table tbody tr td .progress{
-    margin: 0px;
-}
-
-.bootstrap-table table thead tr th{
-    padding-bottom: 10px !important;
+code {
+    font-size: 80%;
 }

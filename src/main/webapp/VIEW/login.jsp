@@ -25,7 +25,7 @@
 <body>
 <div class="container">
     <div class="col-md-6 col-md-offset-3" id="loginBox">
-        <div class="well bs-component">
+        <div class="well">
             <form class="form-horizontal" action="/login" method="post">
                 <fieldset>
                     <legend>用户登录</legend>
@@ -45,8 +45,8 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <button type="reset" class="btn btn-default">重置</button>
                             <button type="submit" class="btn btn-primary">登陆</button>
+                            <button type="reset" class="btn btn-default">重置</button>
                         </div>
                     </div>
                 </fieldset>

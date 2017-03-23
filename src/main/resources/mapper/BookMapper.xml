@@ -4,13 +4,13 @@
   <resultMap id="BaseResultMap" type="model.Book">
     <id column="book_id" jdbcType="INTEGER" property="bookId" />
     <result column="book_name" jdbcType="VARCHAR" property="bookName" />
-    <result column="book_cover" jdbcType="VARCHAR" property="bookCover" />
+    <result column="book_isbn" jdbcType="VARCHAR" property="bookISBN" />
     <result column="book_note" jdbcType="VARCHAR" property="bookNote" />
     <result column="book_page" jdbcType="INTEGER" property="bookPage" />
     <result column="book_author" jdbcType="VARCHAR" property="bookAuthor" />
   </resultMap>
   <sql id="Base_Column_List">
-    book_id, book_name, book_cover, book_note, book_page, book_author
+    book_id, book_name, book_isbn, book_note, book_page, book_author
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -18,15 +18,26 @@
     from book
     where book_id = #{bookId,jdbcType=INTEGER}
   </select>
+  <select id="selectAllBooks" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from book
+  </select>
+  <select id="selectByBookName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from book
+    where book_name = #{bookName,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from book
     where book_id = #{bookId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="model.Book">
-    insert into book (book_id, book_name, book_cover, 
+    insert into book (book_id, book_name, book_isbn,
       book_note, book_page, book_author
       )
-    values (#{bookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{bookCover,jdbcType=VARCHAR}, 
+    values (#{bookId,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{bookISBN,jdbcType=VARCHAR},
       #{bookNote,jdbcType=VARCHAR}, #{bookPage,jdbcType=INTEGER}, #{bookAuthor,jdbcType=VARCHAR}
       )
   </insert>
@@ -39,8 +50,8 @@
       <if test="bookName != null">
         book_name,
       </if>
-      <if test="bookCover != null">
-        book_cover,
+      <if test="bookISBN != null">
+        book_isbn,
       </if>
       <if test="bookNote != null">
         book_note,
@@ -59,8 +70,8 @@
       <if test="bookName != null">
         #{bookName,jdbcType=VARCHAR},
       </if>
-      <if test="bookCover != null">
-        #{bookCover,jdbcType=VARCHAR},
+      <if test="bookISBN != null">
+        #{bookISBN,jdbcType=VARCHAR},
       </if>
       <if test="bookNote != null">
         #{bookNote,jdbcType=VARCHAR},
@@ -79,8 +90,8 @@
       <if test="bookName != null">
         book_name = #{bookName,jdbcType=VARCHAR},
       </if>
-      <if test="bookCover != null">
-        book_cover = #{bookCover,jdbcType=VARCHAR},
+      <if test="bookISBN != null">
+        book_isbn = #{bookISBN,jdbcType=VARCHAR},
       </if>
       <if test="bookNote != null">
         book_note = #{bookNote,jdbcType=VARCHAR},
@@ -97,7 +108,7 @@
   <update id="updateByPrimaryKey" parameterType="model.Book">
     update book
     set book_name = #{bookName,jdbcType=VARCHAR},
-      book_cover = #{bookCover,jdbcType=VARCHAR},
+      book_isbn = #{bookISBN,jdbcType=VARCHAR},
       book_note = #{bookNote,jdbcType=VARCHAR},
       book_page = #{bookPage,jdbcType=INTEGER},
       book_author = #{bookAuthor,jdbcType=VARCHAR}

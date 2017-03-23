@@ -1,5 +1,5 @@
 /**
- * Created by cacri on 2017/3/10.
+ * Created by cacri on 2017/3/22.
  */
 $(document).ready(function () {
     getData();
@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 function getData() {
     $.ajax({
-        url: "/index",
+        url: "/getAllBook",
         type: 'POST',
         dataType: 'json',
         success: function (json) {
@@ -24,8 +24,8 @@ function getData() {
 }
 
 function initTable(bookList) {
-    $('#indexBookTable').bootstrapTable('destroy');
-    $('#indexBookTable').bootstrapTable({
+    $('#libraryBookTable').bootstrapTable('destroy');
+    $('#libraryBookTable').bootstrapTable({
         data: bookList,
         cache: false,
         pagination: true,
@@ -41,28 +41,26 @@ function initTable(bookList) {
             order: "desc",
             field: "bookISBN"
         }, {
-            title: "书名",
-            sortable: true,
-            formatter: function (value, row, index) {
-                return '<a href="/book?bookId=' + row.bookId + '" mce_href="#">' + row.bookName + '</a> ';
-            },
-            order: "desc"
+            title: "书名",//标题
+            field: "bookName",//键名
+            sortable: true,//是否可排序
+            order: "desc"//默认排序方式
         }, {
-            title: "作者",
-            field: "bookAuthor",
-            sortable: true,
-            order: "desc"
+            title: "作者",//标题
+            field: "bookAuthor",//键名
+            sortable: true,//是否可排序
+            order: "desc"//默认排序方式
         }, {
-            title: "页数",
-            field: "bookPage",
-            sortable: true,
-            order: "desc"
+            title: "页数",//标题
+            field: "bookPage",//键名
+            sortable: true,//是否可排序
+            order: "desc"//默认排序方式
         }, {
-            title: "操作",
+            title: "添加至书架",//标题
             align: 'center',
-            field: "bookId",
+            field: "bookId",//键名
             formatter: function () {
-                return '<button class="btn btn-danger btn-default" id="delButton" href="javascript:void(0)">删除</button>'
+                return '<button class="btn btn-primary btn-default" id="addButton" href="javascript:void(0)">添加</button>'
             },
             events: operateEvents
         }]
@@ -70,8 +68,19 @@ function initTable(bookList) {
 }
 
 window.operateEvents = {
-    'click #delButton': function (e, value, row) {
+    'click #addButton': function (e, value, row) {
         var id = row.bookId;
-        alert('delete' + id);
+        $.ajax({
+            url: "/addBookFromLib",
+            type: "post",
+            dataType: 'json',
+            data: {"bookId": id},
+            success: function (json) {
+                if (json.status) {
+                    alert("success!");
+                    getData();
+                }
+            }
+        })
     }
 }

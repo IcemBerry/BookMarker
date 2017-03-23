@@ -95,7 +95,7 @@
     </div>
 </div>
 
-<footer class="footer" style="margin-top: 50px;padding: 10px 0">
+<footer class="footer">
     <div class="container">
         <p class="text-muted">Place sticky footer content here.</p>
     </div>

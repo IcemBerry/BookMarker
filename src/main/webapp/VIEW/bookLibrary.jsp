@@ -24,7 +24,7 @@
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.js"></script>
 
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bookLibrary.js"></script>
 
 </head>
 
@@ -53,7 +53,8 @@
     </div>
     <div class="col-md-10">
         <ol class="breadcrumb">
-            <li class="active">我的书库</li>
+            <li><a href="/index">我的书库</a></li>
+            <li class="active">全局书库</li>
         </ol>
     </div>
     <div class="col-md-10">
@@ -65,11 +66,14 @@
     </div>
 
     <div class="col-md-10">
-        <table id="indexBookTable">
+        <table id="libraryBookTable">
         </table>
 
-        <div class="well well-sm">
-            <button class="btn btn-success btn-default" onclick="location='/toBookLibrary'">从书库添加</button>
+        <div class="alert alert-warning" style="margin-bottom: 0px">
+            <strong>未找到需要添加的书目？</strong>
+            <button type="button" class="btn btn-success btn-default"
+                    onclick="location='/addBook'">添加新书至书库
+            </button>
         </div>
     </div>
 </div>

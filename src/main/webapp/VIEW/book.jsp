@@ -55,13 +55,13 @@
     </div>
 
     <div class="col-md-4">
-        <img width="100%" height="100%" class="img-thumbnail" src="/assets/cover/${book.bookId}.jpg">
+        <img width="100%" height="100%" class="img-thumbnail" src="/assets/cover/${book.bookISBN}.jpg">
     </div>
     <div class="col-md-6">
         <table class="table table-bordered col-md-12">
             <tr>
-                <td>编号</td>
-                <td>${book.bookId}</td>
+                <td>ISBN编号</td>
+                <td>${book.bookISBN}</td>
             </tr>
             <tr>
                 <td>书名</td>

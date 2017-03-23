@@ -23,4 +23,9 @@ public class LibraryServiceImpl implements LibraryService {
     public List<Library> getUserLibraryByUser(User user) {
         return libraryMapper.selectByUserId(user.getUserId());
     }
+
+    @Override
+    public int insertLibrary(Library library) {
+        return libraryMapper.insert(library);
+    }
 }

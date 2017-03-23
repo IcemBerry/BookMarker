@@ -20,11 +20,10 @@
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
     <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>--%>
+    <%--<script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.js"></script>--%>
 
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/assets/js/index.js"></script>
 
 </head>
 
@@ -44,32 +43,19 @@
 <div class="container">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/index">我的书库</a></li>
+            <li><a href="/index">我的书库</a></li>
             <li><a href="/progress">阅读进度</a></li>
             <li><a href="/analysis">阅读分析</a></li>
             <li><a href="/note">阅读笔记</a></li>
             <li><a href="/about">关于BM</a></li>
         </ul>
     </div>
-    <div class="col-md-10">
-        <ol class="breadcrumb">
-            <li class="active">我的书库</li>
-        </ol>
-    </div>
-    <div class="col-md-10">
-        <div class="alert alert-info">
-            共检索到
-            <mark id="bookNum"></mark>
-            本书
-        </div>
-    </div>
 
     <div class="col-md-10">
-        <table id="indexBookTable">
-        </table>
-
-        <div class="well well-sm">
-            <button class="btn btn-success btn-default" onclick="location='/toBookLibrary'">从书库添加</button>
+        <div class="jumbotron">
+            <h1 style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif">Book Marker</h1>
+            <p style="font-family: 黑体">点击下方按钮加入我们！</p>
+            <p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="btn()">Learn more</a></p>
         </div>
     </div>
 </div>

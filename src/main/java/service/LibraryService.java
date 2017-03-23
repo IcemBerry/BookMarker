@@ -11,4 +11,6 @@ import java.util.List;
 public interface LibraryService {
 
     List<Library> getUserLibraryByUser(User user);
+
+    int insertLibrary(Library library);
 }
