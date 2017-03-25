@@ -1,5 +1,7 @@
 package controller;
 
+import dto.ProgressDTO;
+import model.Book;
 import model.Note;
 import model.Progress;
 import model.User;
@@ -14,6 +16,7 @@ import service.ProgressService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,12 +54,19 @@ public class AnalysisController {
             for (Note note : noteList){
                 note.setBook(bookService.getBookByBookId(note.getBookId()));
             }
+            List<ProgressDTO> progressDTOList = new ArrayList<ProgressDTO>();
             List<Progress> progressList = progressService.getProgressByUserId(user.getUserId());
             for (Progress progress : progressList){
-                progress.setBook(bookService.getBookByBookId(progress.getBookId()));
+                Book book = bookService.getBookByBookId(progress.getBookId());
+                ProgressDTO progressDTO = new ProgressDTO();
+                progressDTO.setBookId(progress.getBookId());
+                progressDTO.setBookName(book.getBookName());
+                int progressPercent = (int)Math.round((double)progress.getProgress() / (double)book.getBookPage() * 100);
+                progressDTO.setProgressPercent(progressPercent);
+                progressDTOList.add(progressDTO);
             }
             map.put("noteList",noteList);
-            map.put("progressList",progressList);
+            map.put("progressDTOList",progressDTOList);
         }
         return map;
     }

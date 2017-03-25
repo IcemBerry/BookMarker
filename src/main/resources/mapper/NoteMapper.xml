@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.NoteMapper">
+<mapper namespace="mapper.NoteMapper">
   <resultMap id="BaseResultMap" type="model.Note">
     <id column="note_id" jdbcType="INTEGER" property="noteId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />

@@ -1,13 +1,11 @@
 package service.impl;
 
-import dao.UserMapper;
+import mapper.UserMapper;
 import model.User;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import service.UserService;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by cacri on 2017/2/9.
@@ -26,18 +24,5 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByUserName(String userName) {
         return userMapper.selectByUserName(userName);
-    }
-
-    @Transactional
-    @Deprecated
-    public int insertUsersByUserList(List<User> userList) {
-        for (User user : userList) {
-            int affectedCount = userMapper.insert(user);
-            if (affectedCount == 1) {
-                return 1;
-            }
-            return 0;
-        }
-        return 0;
     }
 }

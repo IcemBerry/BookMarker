@@ -52,17 +52,12 @@
         </ul>
     </div>
     <div class="col-md-10">
-        <div class="well well-sm">
-            共检索到
-            <mark id="bookNum">12</mark>
-            本书
-        </div>
-    </div>
-    <div class="col-md-10">
-        <div class="well well-sm">
-            共检索到
-            <mark id="noteNum">12</mark>
-            条笔记
+        <div class="alert alert-info">
+            <p>共检索到
+                <mark id="bookNum"></mark>
+                本书的阅读进度及<mark id="noteNum"></mark>
+                条笔记
+            </p>
         </div>
     </div>
     <div class="col-md-10">

@@ -1,4 +1,4 @@
-package dao;
+package mapper;
 
 import model.Progress;
 import org.apache.ibatis.annotations.Param;

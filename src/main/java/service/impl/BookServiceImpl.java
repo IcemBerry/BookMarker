@@ -1,6 +1,6 @@
 package service.impl;
 
-import dao.BookMapper;
+import mapper.BookMapper;
 import model.Book;
 import org.springframework.stereotype.Service;
 import service.BookService;

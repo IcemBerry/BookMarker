@@ -19,7 +19,7 @@ public class MainTest {
 
     @Test
     public void testFindBookById(){
-        dao.BookMapper bookMapper = (dao.BookMapper) applicationContext.getBean("bookMapper");
+        mapper.BookMapper bookMapper = (mapper.BookMapper) applicationContext.getBean("bookMapper");
         Book book = bookMapper.selectByPrimaryKey(1);
         System.out.println(book.getBookName());
     }

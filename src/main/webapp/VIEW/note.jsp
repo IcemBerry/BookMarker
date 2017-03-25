@@ -16,12 +16,14 @@
     <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.min.js"></script>
 
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/assets/js/note.js"></script>
 </head>
 
 <body>
@@ -53,45 +55,22 @@
         </ul>
     </div>
     <div class="col-md-10">
-        <div class="well well-sm">
-            共检索到
-            <mark>${fn:length(noteList)}</mark>
-            本书的笔记
+        <div class="alert alert-info">
+            <p>
+                共检索到
+                <mark id="noteNum"></mark>
+                条笔记
+            </p>
         </div>
     </div>
-    <div class="col-md-10">
-        <c:forEach items="${noteList}" var="noteDTO" varStatus="status">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a href="/book?bookId=${noteDTO.book.bookId}"><h5>${noteDTO.book.bookName}</h5></a>
-                </div>
-                <%--<div class="panel-body">--%>
-                    <%--<p>${noteDTO.book.bookNote}</p>--%>
-                <%--</div>--%>
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th class="col-md-1">序号</th>
-                        <th class="col-md-1">位置</th>
-                        <th class="col-md-10">笔记</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${noteDTO.noteList}" var="note" varStatus="status">
-                        <tr>
-                            <td>${status.index+1}</td>
-                            <td>${note.notePage}</td>
-                            <td>${note.note}</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
-                <div class="panel-footer">
-                    <button class="btn btn-primary btn-sm">管理</button>
-                    <button class="btn btn-success btn-sm">添加</button>
-                </div>
-            </div>
-        </c:forEach>
+    <div class="col-md-10" id="mainList">
+        <table id="noteTable">
+
+        </table>
+
+        <div class="well well-sm">
+            <button class="btn btn-success btn-default">添加</button>
+        </div>
     </div>
 </div>
 

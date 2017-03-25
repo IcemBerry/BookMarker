@@ -1,5 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -16,12 +14,16 @@
     <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.js"></script>
 
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/assets/js/progress.js"></script>
+
 </head>
 
 <body>
@@ -53,51 +55,22 @@
         </ol>
     </div>
     <div class="col-md-10">
-        <div class="well well-sm">
+        <div class="alert alert-info">
             检索到
-            <mark>${progressList.size()}</mark>
-            本书的阅读进度，其中
-            <mark>${done}</mark>
-            本书已阅读完毕
+            <mark id="progressNum"></mark>
+            本书的阅读进度，另有
+            <mark id="unOpenNum"></mark>
+            本书还未记录阅读进度
         </div>
     </div>
     <div class="col-md-10 bootstrap-table">
-        <section class="panel">
-            <table class="table table-striped table-advance table-hover">
-                <thead>
-                <tr>
-                    <th class="col-md-2"><i class="fa fa-book fa-fw"></i> 书名</th>
-                    <th class="col-md-1"><i class="fa fa-info fa-fw"></i> 总页</th>
-                    <th class="col-md-1"><i class="fa fa-bookmark fa-fw"></i> 当前</th>
-                    <th class="col-md-2"><i class="fa fa-calendar fa-fw"></i> 更新时间</th>
-                    <th class="col-md-4"><i class="fa fa-check fa-fw"></i> 阅读进度</th>
-                    <th class="col-md-2"><i class="fa fa-edit fa-fw"></i> 操作</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${progressList}" var="progress">
-                    <tr>
-                        <td><a href="/book?bookId=${progress.bookId}">${progress.book.bookName}</a></td>
-                        <td>${progress.book.bookPage}</td>
-                        <td>${progress.progress}</td>
-                        <td><fmt:formatDate value="${progress.progressDate}" pattern="yyyy-MM-dd"/></td>
-                        <td>
-                            <div class="progress">
-                                <div class="progress-bar"role="progressbar" aria-valuenow="<fmt:formatNumber type="number" value="${progress.progress/progress.book.bookPage*100}" maxFractionDigits="0"/>"
-                                     aria-valuemin="0" aria-valuemax="100" style="width: <fmt:formatNumber type="number" value="${progress.progress/progress.book.bookPage*100}" maxFractionDigits="0"/>%">
-                                    <fmt:formatNumber type="number" value="${progress.progress/progress.book.bookPage*100}" maxFractionDigits="0"/>%
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="btn btn-primary btn-xs"><i class="icon-pencil"></i>更新进度</button>
-                            <button class="btn btn-danger btn-xs"><i class="icon-trash "></i>完成</button>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
+            <table id="progressTable">
+
             </table>
-        </section>
+
+            <table id="unOpenBookTable">
+
+            </table>
     </div>
 </div>
 

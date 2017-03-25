@@ -1,6 +1,6 @@
 package service.impl;
 
-import dao.NoteMapper;
+import mapper.NoteMapper;
 import model.Note;
 import org.springframework.stereotype.Service;
 import service.NoteService;

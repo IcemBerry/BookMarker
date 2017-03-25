@@ -29,17 +29,6 @@ public class ServiceTest {
     }
 
     @Test
-    public void InsertTest(){
-        List<User> userList = new ArrayList<User>();
-        User user = new User();
-        user.setUserId(5);
-        user.setUserName("TestSource");
-        user.setPassword("123456");
-        userList.add(user);
-        userService.insertUsersByUserList(userList);
-    }
-
-    @Test
     public void UserNameTest(){
         User user = userService.getUserByUserName("jack");
         System.out.println(user.getPassword());

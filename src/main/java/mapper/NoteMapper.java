@@ -1,4 +1,4 @@
-package dao;
+package mapper;
 
 import model.Note;
 import org.apache.ibatis.annotations.Param;

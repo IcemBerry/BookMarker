@@ -1,8 +1,7 @@
 package service.impl;
 
-import dao.ProgressMapper;
+import mapper.ProgressMapper;
 import model.Progress;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import service.ProgressService;
 
@@ -26,6 +25,11 @@ public class ProgressServiceImpl implements ProgressService {
     @Override
     public Progress getProgressByUserIdAndBookId(int userId,int bookId) {
         return progressMapper.selectProgressByUserIdAndBookId(userId,bookId);
+    }
+
+    @Override
+    public int insertProgress(Progress progress) {
+        return progressMapper.insert(progress);
     }
 
 

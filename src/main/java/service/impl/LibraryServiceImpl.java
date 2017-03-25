@@ -1,6 +1,6 @@
 package service.impl;
 
-import dao.LibraryMapper;
+import mapper.LibraryMapper;
 import model.Library;
 import model.User;
 import org.springframework.stereotype.Service;

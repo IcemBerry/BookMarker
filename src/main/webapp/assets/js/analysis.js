@@ -7,23 +7,23 @@ $(document).ready(function () {
         url: '/analysis',
         dataType: 'json',
         success: function (json) {
-            drawReadCharts(json.progressList);
+            drawReadCharts(json.progressDTOList);
             drawNoteCharts(json.noteList);
         }
     });
 });
 
-function drawReadCharts(progressList) {
-    if (!progressList || progressList.length <= 0) {
+function drawReadCharts(progressDTOList) {
+    if (!progressDTOList || progressDTOList.length <= 0) {
         return;
     }
     var myChart = echarts.init(document.getElementById('ReadTime'));
     var xData = new Array();
     var chartData = new Array();
 
-    $.each(progressList, function (index, val) {
-        xData.push(val.book.bookName);
-        chartData.push(val.progress);
+    $.each(progressDTOList, function (index, val) {
+        xData.push(val.bookName);
+        chartData.push(val.progressPercent);
     });
 
     document.getElementById("bookNum").innerHTML = xData.length;
@@ -40,7 +40,8 @@ function drawReadCharts(progressList) {
             trigger: 'axis',
             axisPointer: {
                 type: 'shadow'
-            }
+            },
+            formatter: "阅读{a} <br/>{b}: {c} %"
         },
         grid: {
             left: '3%',
