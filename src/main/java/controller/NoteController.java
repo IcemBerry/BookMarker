@@ -2,11 +2,9 @@ package controller;
 
 import dto.NoteDTO;
 import model.Book;
-import model.Library;
 import model.Note;
 import model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,11 +13,9 @@ import service.LibraryService;
 import service.NoteService;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by cacri on 2017/3/15.
@@ -37,7 +33,7 @@ public class NoteController {
     private BookService bookService;
 
     @RequestMapping(value = "/note", method = RequestMethod.GET)
-    public String toUserLibrary(HttpSession session) {
+    public String toUserNote(HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (user != null) {
             return "note";
@@ -47,8 +43,8 @@ public class NoteController {
 
     @ResponseBody
     @RequestMapping(value = "/note", method = RequestMethod.POST)
-    public Map<String,Object> getUserLibrary(HttpSession session) {
-        Map<String,Object> map = new HashMap<String,Object>();
+    public Map<String, Object> getUserNote(HttpSession session) {
+        Map<String, Object> map = new HashMap<String, Object>();
         User user = (User) session.getAttribute("user");
         List<NoteDTO> noteDTOList = new ArrayList<NoteDTO>();
         List<Note> noteList = noteService.getNoteByUserId(user.getUserId());
@@ -65,7 +61,40 @@ public class NoteController {
             noteDTOList.add(noteDTO);
         }
 
-        map.put("noteDTOList",noteDTOList);
+        map.put("noteDTOList", noteDTOList);
+        return map;
+    }
+
+    @RequestMapping(value = "/addNote", method = RequestMethod.GET)
+    public String toAddNote(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            return "noteAdd";
+        }
+        return "redirect:login";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/addNote", method = RequestMethod.POST)
+    public Map<String, Object> addNote(HttpSession session, HttpServletRequest request) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        User user = (User) session.getAttribute("user");
+        Note note = new Note();
+
+
+        note.setUserId(user.getUserId());
+        note.setNotePage(Integer.parseInt(request.getParameter("bookPage")));
+        note.setNote(request.getParameter("bookNote"));
+        note.setBookId(Integer.parseInt(request.getParameter("bookId")));
+        note.setNoteDate(new Date());
+
+        int result = noteService.addNote(note);
+
+        if (result > 0)
+            map.put("status", true);
+        else
+            map.put("status", false);
+
         return map;
     }
 }

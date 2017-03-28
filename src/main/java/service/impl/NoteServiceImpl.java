@@ -26,4 +26,9 @@ public class NoteServiceImpl implements NoteService {
     public List<Note> getNoteByUserId(int userId) {
         return noteMapper.selectByUserId(userId);
     }
+
+    @Override
+    public int addNote(Note note) {
+        return noteMapper.insert(note);
+    }
 }

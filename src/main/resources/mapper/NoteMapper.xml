@@ -37,9 +37,9 @@
   </delete>
   <insert id="insert" parameterType="model.Note">
     insert into note (note_id, user_id, book_id, 
-      note_date, note)
+      note_date, note,note_page)
     values (#{noteId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{bookId,jdbcType=INTEGER}, 
-      #{noteDate,jdbcType=TIMESTAMP}, #{note,jdbcType=VARCHAR})
+      #{noteDate,jdbcType=TIMESTAMP}, #{note,jdbcType=VARCHAR},#{notePage,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="model.Note">
     insert into note
