@@ -69,7 +69,7 @@
         </table>
 
         <div class="well well-sm">
-            <button class="btn btn-success btn-default">添加</button>
+            <button class="btn btn-success btn-default" onclick="location.href='/addNote';">添加</button>
         </div>
     </div>
 </div>

@@ -1,9 +1,7 @@
 package controller;
 
 import dto.NoteDTO;
-import model.Book;
-import model.Note;
-import model.User;
+import model.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -94,6 +92,20 @@ public class NoteController {
             map.put("status", true);
         else
             map.put("status", false);
+
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/deleteNote", method = RequestMethod.POST)
+    public Map<String, Object> deleteNote(HttpServletRequest request) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        int noteId = Integer.parseInt(request.getParameter("noteId"));
+        int result = noteService.deleteByNoteId(noteId);
+
+        if (result > 0) {
+            map.put("status", true);
+        }
 
         return map;
     }

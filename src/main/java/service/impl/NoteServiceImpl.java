@@ -31,4 +31,9 @@ public class NoteServiceImpl implements NoteService {
     public int addNote(Note note) {
         return noteMapper.insert(note);
     }
+
+    @Override
+    public int deleteByNoteId(Integer noteId) {
+        return noteMapper.deleteByPrimaryKey(noteId);
+    }
 }

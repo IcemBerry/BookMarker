@@ -13,4 +13,6 @@ public interface NoteService {
     List<Note> getNoteByUserId(int userId);
 
     int addNote(Note note);
+
+    int deleteByNoteId(Integer noteId);
 }

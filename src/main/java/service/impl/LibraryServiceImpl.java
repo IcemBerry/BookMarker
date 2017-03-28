@@ -28,4 +28,17 @@ public class LibraryServiceImpl implements LibraryService {
     public int insertLibrary(Library library) {
         return libraryMapper.insert(library);
     }
+
+    @Override
+    public Library getLibraryByUserIdAndBookId(Integer userId, Integer bookId) {
+        System.out.println("------------------------>userId:"+userId+",bookId:"+bookId);
+        return libraryMapper.selectByBookIdAndUserId(userId, bookId);
+    }
+
+    @Override
+    public int deleteByLibraryId(Integer libraryId) {
+        return libraryMapper.deleteByPrimaryKey(libraryId);
+    }
+
+
 }

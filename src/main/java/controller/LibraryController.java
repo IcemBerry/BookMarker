@@ -1,9 +1,8 @@
 package controller;
 
-import model.Book;
-import model.Library;
-import model.User;
+import model.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.BookService;
 import service.LibraryService;
+import service.NoteService;
+import service.ProgressService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,12 @@ public class LibraryController {
 
     @Resource
     private BookService bookService;
+
+    @Resource
+    private ProgressService progressService;
+
+    @Resource
+    private NoteService noteService;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String toUserLibrary(HttpSession session) {
@@ -89,5 +96,45 @@ public class LibraryController {
         }
         map.put("bookList", bookList);
         return map;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/deleteUserBook", method = RequestMethod.POST)
+    public Map<String, Object> deleteLibrary(HttpSession session, HttpServletRequest request) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        User user = (User) session.getAttribute("user");
+        int bookId = Integer.parseInt(request.getParameter("bookId"));
+
+        Library library = libraryService.getLibraryByUserIdAndBookId(user.getUserId(), bookId);
+        List<Note> noteList = noteService.getNoteByUserIdAndBookId(user.getUserId(), bookId);
+        Progress progress = progressService.getProgressByUserIdAndBookId(user.getUserId(), bookId);
+
+        boolean result = deleteUserBookInfo(library,noteList,progress);
+
+        if (result) {
+            map.put("status", true);
+        }
+
+        return map;
+    }
+
+    @Transactional
+    private boolean deleteUserBookInfo(Library library, List<Note> noteList, Progress progress) {
+        boolean flag = false;
+        if (noteList.size()>0) {
+            for (Note note : noteList) {
+                noteService.deleteByNoteId(note.getNoteId());
+            }
+        }
+        if (progress != null){
+            progressService.deleteByProgressId(progress.getProgressId());
+        }
+        if (library !=null){
+            libraryService.deleteByLibraryId(library.getLibraryId());
+            flag = true;
+        }else {
+            flag = false;
+        }
+        return flag;
     }
 }

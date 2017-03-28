@@ -57,16 +57,38 @@ function initNoteTable(noteDTOList) {
             title: "操作",
             align: 'center',
             formatter: function () {
-                return '<button class="btn btn-primary btn-default" id="delButton" href="javascript:void(0)">管理</button>'
+                return '<button class="btn btn-primary btn-default" id="editButton" href="javascript:void(0)">编辑</button> ' +
+                    '<button class="btn btn-danger btn-default" id="delButton" href="javascript:void(0)">删除</button>'
             },
             events: operateEvents
         }]
     });
 }
 
+
 window.operateEvents = {
+    'click #editButton': function (e, value, row) {
+        var id = row.noteId;
+        alert('edit' + id);
+    },
     'click #delButton': function (e, value, row) {
-        var id = row.bookId;
-        alert('delete' + id);
+        var id = row.noteId;
+        $.ajax({
+            url: "/deleteNote",
+            type: 'POST',
+            dataType: 'json',
+            data:{"noteId":id},
+            success: function (json) {
+                if(json.status){
+                    alert("success");
+                    getData();
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('XMLHttpRequest:' + XMLHttpRequest.status +
+                    '     textStatus:' + XMLHttpRequest.readyState +
+                    '     textStatus:' + textStatus);
+            }
+        });
     }
 }

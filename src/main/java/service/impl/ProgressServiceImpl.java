@@ -32,5 +32,10 @@ public class ProgressServiceImpl implements ProgressService {
         return progressMapper.insert(progress);
     }
 
+    @Override
+    public int deleteByProgressId(Integer progressId) {
+        return progressMapper.deleteByProgressId(progressId);
+    }
+
 
 }

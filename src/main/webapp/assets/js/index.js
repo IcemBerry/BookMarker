@@ -72,6 +72,21 @@ function initTable(bookList) {
 window.operateEvents = {
     'click #delButton': function (e, value, row) {
         var id = row.bookId;
-        alert('delete' + id);
+        $.ajax({
+            url: "/deleteUserBook",
+            type: 'POST',
+            dataType: 'json',
+            data: {"bookId": id},
+            success: function (json) {
+                if (json.status) {
+                    getData();
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('XMLHttpRequest:' + XMLHttpRequest.status +
+                    '     textStatus:' + XMLHttpRequest.readyState +
+                    '     textStatus:' + textStatus);
+            }
+        });
     }
 }

@@ -3,6 +3,8 @@ package model;
 import java.util.Date;
 
 public class Progress {
+    private Integer progressId;
+
     private Integer bookId;
 
     private Integer userId;
@@ -12,6 +14,14 @@ public class Progress {
     private Integer progress;
 
     private Book book;
+
+    public Integer getProgressId() {
+        return progressId;
+    }
+
+    public void setProgressId(Integer progressId) {
+        this.progressId = progressId;
+    }
 
     public Integer getBookId() {
         return bookId;

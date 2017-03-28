@@ -9,6 +9,10 @@ import java.util.List;
  */
 public interface ProgressService {
     List<Progress> getProgressByUserId(int userId);
-    Progress getProgressByUserIdAndBookId(int userId,int bookId);
+
+    Progress getProgressByUserIdAndBookId(int userId, int bookId);
+
     int insertProgress(Progress progress);
+
+    int deleteByProgressId(Integer progressId);
 }

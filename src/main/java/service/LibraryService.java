@@ -13,4 +13,8 @@ public interface LibraryService {
     List<Library> getUserLibraryByUser(User user);
 
     int insertLibrary(Library library);
+
+    Library getLibraryByUserIdAndBookId(Integer userId, Integer bookId);
+
+    int deleteByLibraryId(Integer libraryId);
 }

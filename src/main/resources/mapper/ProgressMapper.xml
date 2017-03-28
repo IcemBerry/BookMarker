@@ -2,13 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.ProgressMapper">
   <resultMap id="BaseResultMap" type="model.Progress">
+    <id column="progress_id" jdbcType="INTEGER" property="progressId" />
     <result column="book_id" jdbcType="INTEGER" property="bookId" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="progress_date" jdbcType="TIMESTAMP" property="progressDate" />
     <result column="progress" jdbcType="INTEGER" property="progress" />
   </resultMap>
   <sql id="Base_Column_List">
-    book_id, user_id, progress_date, progress
+    progress_id, book_id, user_id, progress_date, progress
   </sql>
   <select id="selectProgressByUserIdAndBookId" resultMap="BaseResultMap">
     select
@@ -60,4 +61,10 @@
       </if>
     </trim>
   </insert>
+
+  <delete id="deleteByProgressId" parameterType="java.lang.Integer">
+    delete from progress
+    where progress_id = #{progressId,jdbcType=INTEGER}
+  </delete>
+
 </mapper>

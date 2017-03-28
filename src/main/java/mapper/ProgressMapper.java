@@ -13,4 +13,6 @@ public interface ProgressMapper {
     int insert(Progress record);
 
     int insertSelective(Progress record);
+
+    int deleteByProgressId(Integer progressId);
 }
