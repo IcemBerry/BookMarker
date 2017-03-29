@@ -20,7 +20,6 @@
     <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
 
     <!-- 附加动态脚本 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-datetimepicker.min.js"></script><!-- 时间选择器 -->
     <script src="${pageContext.request.contextPath}/assets/js/echarts.common.min.js"></script><!-- Echarts画图 -->
 </head>
 <body>
