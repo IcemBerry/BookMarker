@@ -28,6 +28,11 @@ public class ProgressServiceImpl implements ProgressService {
     }
 
     @Override
+    public Progress getProgressByProgressId(int progressId) {
+        return progressMapper.selectProgressById(progressId);
+    }
+
+    @Override
     public int insertProgress(Progress progress) {
         return progressMapper.insert(progress);
     }
@@ -35,6 +40,11 @@ public class ProgressServiceImpl implements ProgressService {
     @Override
     public int deleteByProgressId(Integer progressId) {
         return progressMapper.deleteByProgressId(progressId);
+    }
+
+    @Override
+    public int updateProgress(Progress progress) {
+        return progressMapper.updateByPrimaryKeySelective(progress);
     }
 
 

@@ -10,9 +10,15 @@ public interface ProgressMapper {
 
     Progress selectProgressByUserIdAndBookId(@Param("userId") int userId, @Param("bookId") int bookId);
 
+    Progress selectProgressById(int progressId);
+
     int insert(Progress record);
 
     int insertSelective(Progress record);
 
     int deleteByProgressId(Integer progressId);
+
+    int updateByPrimaryKeySelective(Progress record);
+
+    int updateByPrimaryKey(Progress record);
 }

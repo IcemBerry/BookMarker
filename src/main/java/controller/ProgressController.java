@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.BookService;
 import service.LibraryService;
@@ -65,7 +66,8 @@ public class ProgressController {
                 progressDTO.setBookId(book.getBookId());
                 progressDTO.setBookPage(book.getBookPage());
                 progressDTO.setProgress(progress.getProgress());
-                int progressPercent = (int)Math.round((double)progress.getProgress() / (double)book.getBookPage() * 100);
+                progressDTO.setProgressId(progress.getProgressId());
+                int progressPercent = (int) Math.round((double) progress.getProgress() / (double) book.getBookPage() * 100);
                 progressDTO.setProgressPercent(progressPercent);
                 progressDTOList.add(progressDTO);
             } else {
@@ -81,7 +83,7 @@ public class ProgressController {
 
     @ResponseBody
     @RequestMapping(value = "/addProgress", method = RequestMethod.POST)
-    public Map<String,Object> addProgress(HttpSession session,HttpServletRequest request){
+    public Map<String, Object> addProgress(HttpSession session, HttpServletRequest request) {
         Map<String, Object> map = new HashMap<String, Object>();
         User user = (User) session.getAttribute("user");
         int bookId = Integer.parseInt(request.getParameter("bookId"));
@@ -103,5 +105,30 @@ public class ProgressController {
             map.put("errorMsg", "Login ERROR");
         }
         return map;
+    }
+
+    @RequestMapping(value = "/toUpdateProgress", method = RequestMethod.GET)
+    public String toUpdateProgress(HttpSession session, Model model, @RequestParam("progressId") int progressId) {
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            Progress progress = progressService.getProgressByProgressId(progressId);
+            progress.setBook(bookService.getBookByBookId(progress.getBookId()));
+            model.addAttribute("progress", progress);
+            return "progressEdit";
+        }
+        return "redirect:login";
+    }
+
+    @RequestMapping(value = "/updateProgress", method = RequestMethod.POST)
+    public String updateProgress(HttpServletRequest request) {
+        Progress progress = new Progress();
+
+        progress.setProgressId(Integer.parseInt(request.getParameter("progressId")));
+        progress.setProgress(Integer.parseInt(request.getParameter("progress")));
+        progress.setProgressDate(new Date());
+
+        progressService.updateProgress(progress);
+
+        return "progress";
     }
 }

@@ -12,7 +12,11 @@ public interface ProgressService {
 
     Progress getProgressByUserIdAndBookId(int userId, int bookId);
 
+    Progress getProgressByProgressId(int progressId);
+
     int insertProgress(Progress progress);
 
     int deleteByProgressId(Integer progressId);
+
+    int updateProgress(Progress progress);
 }

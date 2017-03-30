@@ -72,4 +72,17 @@ public class Note {
     public void setBook(Book book) {
         this.book = book;
     }
+
+    @Override
+    public String toString() {
+        return "Note{" +
+                "noteId=" + noteId +
+                ", userId=" + userId +
+                ", bookId=" + bookId +
+                ", noteDate=" + noteDate +
+                ", note='" + note + '\'' +
+                ", notePage=" + notePage +
+                ", book=" + book +
+                '}';
+    }
 }

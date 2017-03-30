@@ -4,11 +4,20 @@ package dto;
  * Created by cacri on 2017/3/24.
  */
 public class ProgressDTO {
+    private int progressId;
     private int bookId;
     private String bookName;
     private int bookPage;
     private int progress;
     private int progressPercent;
+
+    public int getProgressId() {
+        return progressId;
+    }
+
+    public void setProgressId(int progressId) {
+        this.progressId = progressId;
+    }
 
     public int getBookId() {
         return bookId;

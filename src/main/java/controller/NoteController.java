@@ -3,8 +3,10 @@ package controller;
 import dto.NoteDTO;
 import model.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import service.BookService;
 import service.LibraryService;
@@ -79,7 +81,6 @@ public class NoteController {
         User user = (User) session.getAttribute("user");
         Note note = new Note();
 
-
         note.setUserId(user.getUserId());
         note.setNotePage(Integer.parseInt(request.getParameter("bookPage")));
         note.setNote(request.getParameter("bookNote"));
@@ -108,5 +109,31 @@ public class NoteController {
         }
 
         return map;
+    }
+
+    @RequestMapping(value = "/toEditNote", method = RequestMethod.GET)
+    public String toEditNote(HttpSession session, Model model, @RequestParam("noteId") int noteId) {
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            Note note = noteService.getNoteByNoteId(noteId);
+            note.setBook(bookService.getBookByBookId(note.getBookId()));
+            model.addAttribute("note", note);
+            return "noteEdit";
+        }
+        return "redirect:login";
+    }
+
+    @RequestMapping(value = "/editNote", method = RequestMethod.POST)
+    public String editNote(HttpServletRequest request) {
+
+        Note note = new Note();
+
+        note.setNoteId(Integer.parseInt(request.getParameter("noteId")));
+        note.setNote(request.getParameter("bookNote"));
+        note.setNoteDate(new Date());
+
+        noteService.editNote(note);
+
+        return "note";
     }
 }

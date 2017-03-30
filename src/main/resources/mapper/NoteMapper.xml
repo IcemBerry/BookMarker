@@ -31,6 +31,7 @@
     from note
     where note_id = #{noteId,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from note
     where note_id = #{noteId,jdbcType=INTEGER}
@@ -83,9 +84,6 @@
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="bookId != null">
-        book_id = #{bookId,jdbcType=INTEGER},
       </if>
       <if test="noteDate != null">
         note_date = #{noteDate,jdbcType=TIMESTAMP},

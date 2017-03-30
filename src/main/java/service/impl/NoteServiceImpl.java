@@ -36,4 +36,14 @@ public class NoteServiceImpl implements NoteService {
     public int deleteByNoteId(Integer noteId) {
         return noteMapper.deleteByPrimaryKey(noteId);
     }
+
+    @Override
+    public Note getNoteByNoteId(int noteId) {
+        return noteMapper.selectByPrimaryKey(noteId);
+    }
+
+    @Override
+    public int editNote(Note note) {
+        return noteMapper.updateByPrimaryKeySelective(note);
+    }
 }

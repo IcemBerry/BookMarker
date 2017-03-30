@@ -128,6 +128,10 @@ function operateFormatter(value, row, index) {
 }
 
 window.operateEvents = {
+    'click #updateButton': function (e, value, row) {
+        var id = row.progressId;
+        location.href = "/toUpdateProgress?progressId="+id;
+    },
     'click #startButton': function (e, value, row) {
         var id = row.bookId;
         $.ajax({

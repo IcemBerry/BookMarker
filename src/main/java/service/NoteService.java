@@ -15,4 +15,8 @@ public interface NoteService {
     int addNote(Note note);
 
     int deleteByNoteId(Integer noteId);
+
+    Note getNoteByNoteId(int noteId);
+
+    int editNote(Note note);
 }

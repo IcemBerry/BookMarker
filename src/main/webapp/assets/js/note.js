@@ -69,7 +69,7 @@ function initNoteTable(noteDTOList) {
 window.operateEvents = {
     'click #editButton': function (e, value, row) {
         var id = row.noteId;
-        alert('edit' + id);
+        location.href = "/toEditNote?noteId="+id;
     },
     'click #delButton': function (e, value, row) {
         var id = row.noteId;
@@ -77,9 +77,9 @@ window.operateEvents = {
             url: "/deleteNote",
             type: 'POST',
             dataType: 'json',
-            data:{"noteId":id},
+            data: {"noteId": id},
             success: function (json) {
-                if(json.status){
+                if (json.status) {
                     alert("success");
                     getData();
                 }
