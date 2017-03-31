@@ -8,21 +8,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>库</title>
+    <title>添加图书</title>
 
     <!-- 通用样式表 -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap-table.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.min.js"></script>
 
+    <!-- 自定义内容 -->
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/assets/js/bookAdd.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/customize/bookAdd.js"></script>
 </head>
 
 <body>
@@ -41,16 +41,16 @@
 <div class="container">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/index">我的书库</a></li>
+            <li class="active"><a href="/index">我的书架</a></li>
             <li><a href="/progress">阅读进度</a></li>
-            <li><a href="/analysis">阅读分析</a></li>
             <li><a href="/note">阅读笔记</a></li>
+            <li><a href="/analysis">阅读分析</a></li>
             <li><a href="/about">关于BM</a></li>
         </ul>
     </div>
     <div class="col-md-10">
         <ol class="breadcrumb">
-            <li><a href="/index">我的书库</a></li>
+            <li><a href="/index">我的书架</a></li>
             <li><a href="/toBookLibrary">全局书库</a></li>
             <li class="active">添加图书</li>
         </ol>
@@ -59,7 +59,7 @@
     <div class="col-md-10">
         <div class="alert alert-info" role="alert" id="infoText">
             带有
-            <i class="fa fa-asterisk" aria-hidden="true" style="color: #db4d6d"></i>
+            <span class="glyphicon glyphicon-asterisk" style="color: #db4d6d"></span>
             号的为必填项
         </div>
         <div class="well">
@@ -70,8 +70,9 @@
                     <div class="col-md-10">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="ISBN编号" id="bookISBN">
-                            <div class="input-group-addon"><i class="fa fa-asterisk" aria-hidden="true"
-                                                              style="color: #db4d6d"></i></div>
+                            <div class="input-group-addon">
+                                <span class="glyphicon glyphicon-asterisk" style="color: #db4d6d"></span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -11,14 +11,14 @@
     <!-- 通用样式表 -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap-table.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
+    <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.min.js"></script>
 
+    <!-- 自定义内容 -->
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
 </head>
 

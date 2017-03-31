@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -6,20 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>库</title>
+    <title>更新进度</title>
 
     <!-- 通用样式表 -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap-table.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-    <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.min.js"></script>
 
+    <!-- 自定义内容 -->
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
 </head>
 
@@ -39,17 +39,18 @@
 <div class="container">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/index">我的书库</a></li>
-            <li><a href="/progress">阅读进度</a></li>
-            <li><a href="/analysis">阅读分析</a></li>
+            <li><a href="/index">我的书架</a></li>
+            <li class="active"><a href="/progress">阅读进度</a></li>
             <li><a href="/note">阅读笔记</a></li>
+            <li><a href="/analysis">阅读分析</a></li>
             <li><a href="/about">关于BM</a></li>
         </ul>
     </div>
     <div class="col-md-10">
-        <ol class="breadcrumb">
-            <li class="active">我的书库</li>
-        </ol>
+        <ul class="breadcrumb">
+            <li><a href="/progress">阅读进度</a></li>
+            <li class="active">更新进度</li>
+        </ul>
     </div>
 
     <div class="col-md-10">
@@ -57,9 +58,9 @@
             <div class="col-md-12">
                 <p>进度预览</p>
                 <div class="progress">
-                    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0"
-                         aria-valuemax="100" style="width: 60%;">
-                        60%
+                    <div class="progress-bar progress-bar-striped active" role="progressbar"
+                         aria-valuenow="${progress.progress}" aria-valuemin="0" aria-valuemax="${progress.book.bookPage}" style="width: <fmt:formatNumber value="${progress.progress/progress.book.bookPage}" type="percent"/>;">
+                        <fmt:formatNumber value="${progress.progress/progress.book.bookPage}" type="percent"/>
                     </div>
                 </div>
             </div>

@@ -6,22 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>库</title>
+    <title>添加笔记</title>
 
     <!-- 通用样式表 -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap-table.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 通用动态脚本 -->
     <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
-    <!-- 无法连接外部网络时，使用 "${pageContext.request.contextPath}/assets/js/jquery.min.js"-->
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
-    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table.min.js"></script>
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap-table-zh-CN.min.js"></script>
 
+    <!-- 自定义内容 -->
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/assets/js/noteAdd.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/customize/noteAdd.js"></script>
 </head>
 
 <body>
@@ -40,17 +39,18 @@
 <div class="container">
     <div class="col-md-2">
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="/index">我的书库</a></li>
+            <li><a href="/index">我的书架</a></li>
             <li><a href="/progress">阅读进度</a></li>
+            <li class="active"><a href="/note">阅读笔记</a></li>
             <li><a href="/analysis">阅读分析</a></li>
-            <li><a href="/note">阅读笔记</a></li>
             <li><a href="/about">关于BM</a></li>
         </ul>
     </div>
     <div class="col-md-10">
-        <ol class="breadcrumb">
-            <li class="active">我的书库</li>
-        </ol>
+        <ul class="breadcrumb">
+            <li><a href="/note">阅读笔记</a></li>
+            <li class="active">添加笔记</li>
+        </ul>
     </div>
     <div class="col-md-10">
         <div class="alert alert-info">
