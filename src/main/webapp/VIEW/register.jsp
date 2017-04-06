@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>登陆</title>
+    <title>注册</title>
 
     <!-- 通用样式表 -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -26,8 +26,8 @@
 <div class="container">
 
     <div class="well col-md-6 col-md-offset-3" id="loginBox">
-        <form class="form-horizontal" action="/login" method="post">
-            <div class="alert alert-info">还没有账号？<a href="/register">立即注册</a></div>
+        <form class="form-horizontal" action="/register" method="post">
+            <div class="alert alert-info">带有<span class="glyphicon glyphicon-asterisk" style="color: #db4d6d"></span>号的为必填项</div>
             <div class="form-group">
                 <div class="col-md-12">
                     <div class="input-group input-group-lg">
@@ -35,6 +35,9 @@
                             <span class="glyphicon glyphicon-user" style="color: #555"></span>
                         </span>
                         <input type="text" name="username" class="form-control" placeholder="用户名">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-asterisk" style="color: #db4d6d"></span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -46,13 +49,16 @@
                             <span class="glyphicon glyphicon-leaf" style="color: #555"></span>
                         </span>
                         <input type="password" name="password" class="form-control" placeholder="密码">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-asterisk" style="color: #db4d6d"></span>
+                        </span>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">登陆</button>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">注册</button>
                 </div>
             </div>
         </form>

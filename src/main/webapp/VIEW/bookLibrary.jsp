@@ -46,7 +46,7 @@
             <li><a href="/progress">阅读进度</a></li>
             <li><a href="/note">阅读笔记</a></li>
             <li><a href="/analysis">阅读分析</a></li>
-            <li><a href="/about">关于BM</a></li>
+            <li><a href="/about">关于<abbr title="Book Marker">BM</abbr></a></li>
         </ul>
     </div>
     <div class="col-md-10">
@@ -75,12 +75,5 @@
         </div>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-    </div>
-</footer>
-
 </body>
 </html>

@@ -45,6 +45,11 @@ public class LibraryController {
         return "redirect:login";
     }
 
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
+    public String toUserLibrary() {
+        return "about";
+    }
+
     @ResponseBody
     @RequestMapping(value = "/index", method = RequestMethod.POST)
     public Map<String, Object> getUserLibrary(HttpSession session) {
@@ -137,4 +142,6 @@ public class LibraryController {
         }
         return flag;
     }
+
+
 }

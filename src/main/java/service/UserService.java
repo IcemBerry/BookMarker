@@ -11,4 +11,9 @@ public interface UserService {
 
     User getUserByUserId(int userId);
     User getUserByUserName(String userName);
+
+    int addUser(User user);
+    int updateUser(User user);
+
+    int deleteUser(int userId);
 }

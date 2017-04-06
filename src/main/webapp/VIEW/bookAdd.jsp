@@ -45,7 +45,7 @@
             <li><a href="/progress">阅读进度</a></li>
             <li><a href="/note">阅读笔记</a></li>
             <li><a href="/analysis">阅读分析</a></li>
-            <li><a href="/about">关于BM</a></li>
+            <li><a href="/about">关于<abbr title="Book Marker">BM</abbr></a></li>
         </ul>
     </div>
     <div class="col-md-10">
@@ -91,7 +91,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">页数</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="bookPage" placeholder="页数">
+                        <input type="number" min="1" class="form-control" id="bookPage" placeholder="页数">
                     </div>
                 </div>
                 <div class="form-group">
@@ -112,13 +112,5 @@
         </div>
     </div>
 </div>
-
-
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-    </div>
-</footer>
-
 </body>
 </html>

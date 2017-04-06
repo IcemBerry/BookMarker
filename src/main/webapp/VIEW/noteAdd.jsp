@@ -27,11 +27,24 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/index">Book Marker</a>
+            <a class="navbar-brand text-center" href="/index">
+                <span class="glyphicon glyphicon-bookmark" style="color: #db4d6d"></span>
+                Book Marker
+            </a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Jack</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        ${user.userName}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/editUser">设置</a></li>
+                        <li><a href="/logout">登出</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -43,7 +56,7 @@
             <li><a href="/progress">阅读进度</a></li>
             <li class="active"><a href="/note">阅读笔记</a></li>
             <li><a href="/analysis">阅读分析</a></li>
-            <li><a href="/about">关于BM</a></li>
+            <li><a href="/about">关于<abbr title="Book Marker">BM</abbr></a></li>
         </ul>
     </div>
     <div class="col-md-10">
@@ -72,7 +85,7 @@
                     </div>
                     <label class="col-md-1 control-label">页数</label>
                     <div class="col-md-5">
-                        <input type="text" class="form-control" id="bookPage" placeholder="页数">
+                        <input type="number" min="1" class="form-control" id="bookPage" placeholder="页数">
                     </div>
                 </div>
                 <div class="form-group col-md-12">
@@ -89,12 +102,5 @@
 
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-    </div>
-</footer>
-
 </body>
 </html>

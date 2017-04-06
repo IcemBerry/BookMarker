@@ -29,11 +29,24 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/index">Book Marker</a>
+            <a class="navbar-brand text-center" href="/index">
+                <span class="glyphicon glyphicon-bookmark" style="color: #db4d6d"></span>
+                Book Marker
+            </a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">${user.userName}</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        ${user.userName}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/editUser">设置</a></li>
+                        <li><a href="/logout">登出</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -45,7 +58,7 @@
             <li><a href="/progress">阅读进度</a></li>
             <li><a href="/note">阅读笔记</a></li>
             <li><a href="/analysis">阅读分析</a></li>
-            <li><a href="/about">关于BM</a></li>
+            <li><a href="/about">关于<abbr title="Book Marker">BM</abbr></a></li>
         </ul>
     </div>
     <div class="col-md-10">
@@ -73,7 +86,9 @@
 
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
+        <p class="text-muted">Book Marker 由<a href="http://weibo.com/caricornus/home">@ICEM</a>设计、搭建及维护&emsp;
+            <span class="glyphicon glyphicon-copyright-mark" style="color: #555"></span>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+        </p>
     </div>
 </footer>
 
