@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/img/logo.ico" type="image/x-icon"/>
     <title>欢迎</title>
 
     <!-- 通用样式表 -->
@@ -64,7 +64,7 @@
     <div class="col-md-10">
         <div class="jumbotron">
             <h1 style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif">Book Marker</h1>
-            <p style="font-family: 黑体">点击下方按钮加入我们！</p>
+            <p style="font-family: 黑体">点击下方按钮以开始！</p>
             <p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="btn()">Learn more</a></p>
         </div>
     </div>

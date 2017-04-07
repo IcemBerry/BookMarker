@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/img/logo.ico" type="image/x-icon"/>
     <title>添加笔记</title>
 
     <!-- 通用样式表 -->
@@ -68,7 +68,7 @@
     <div class="col-md-10">
         <div class="alert alert-info">
             <blockquote style="margin-bottom: 0px">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <p>In silence and in hope will be your strength.</p>
             </blockquote>
         </div>
     </div>

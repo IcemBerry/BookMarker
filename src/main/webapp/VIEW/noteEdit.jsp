@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/img/logo.ico" type="image/x-icon"/>
     <title>修改笔记</title>
 
     <!-- 通用样式表 -->
@@ -20,7 +20,6 @@
 
     <!-- 自定义内容 -->
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/assets/js/customize/noteEdit.js"></script>
 </head>
 
 <body>

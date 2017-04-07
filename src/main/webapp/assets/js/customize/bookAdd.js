@@ -17,22 +17,7 @@ $(document).ready(function(){
             cache: false,
             contentType: false,
             processData: false,
-            dataType:'json',
-            success: function (json) {
-                if (json.status){
-                    var infoDiv = document.getElementById('infoText');
-                    infoDiv.setAttribute('class','alert alert-success');
-                    infoDiv.innerHTML = '添加成功！';
-                    alert('success!');
-                }
-                else{
-                    alert('异常!');
-                    alert(json.errorMsg);
-                }
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                alert('XMLHttpRequest:'+XMLHttpRequest.status+'     textStatus:'+XMLHttpRequest.readyState+'     textStatus:'+textStatus);
-            }
+            dataType:'json'
         })
     })
 })

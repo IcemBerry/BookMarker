@@ -31,7 +31,6 @@ public class LibraryServiceImpl implements LibraryService {
 
     @Override
     public Library getLibraryByUserIdAndBookId(Integer userId, Integer bookId) {
-        System.out.println("------------------------>userId:"+userId+",bookId:"+bookId);
         return libraryMapper.selectByBookIdAndUserId(userId, bookId);
     }
 

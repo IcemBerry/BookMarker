@@ -44,7 +44,6 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(HttpServletRequest request, HttpSession session) {
         String userName = request.getParameter("username");
-        System.out.println(userName);
         User user = userService.getUserByUserName(userName);
         if (user != null && user.getPassword().equals(request.getParameter("password"))) {
             user.setLastLoginTime(new Date());

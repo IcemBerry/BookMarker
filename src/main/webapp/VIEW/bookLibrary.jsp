@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/img/logo.ico" type="image/x-icon"/>
     <title>全局书库</title>
 
     <!-- 通用样式表 -->
@@ -30,11 +30,24 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="/index">Book Marker</a>
+            <a class="navbar-brand text-center" href="/index">
+                <span class="glyphicon glyphicon-bookmark" style="color: #db4d6d"></span>
+                Book Marker
+            </a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">${user.userName}</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        ${user.userName}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/editUser">设置</a></li>
+                        <li><a href="/logout">登出</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

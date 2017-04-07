@@ -92,27 +92,15 @@ public class BookController {
 
             String realPathDir = request.getSession().getServletContext().getRealPath("/assets/cover/");
             String suffix = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf("."));
-            System.out.println("suffix----------------->>" + suffix);
-            System.out.println("bookISBN----------------->>" + bookISBN);
-            System.out.println("bookName----------------->>" + book.getBookName());
-            System.out.println("bookNote----------------->>" + book.getBookNote());
-            System.out.println("bookPage----------------->>" + book.getBookPage());
-            System.out.println("bookAuthor----------------->>" + book.getBookAuthor());
             if (bookISBN != null && !bookISBN.trim().equals("")){
-                System.out.println("------------ISBN Check PASS------------");
                 if (suffix.equals(".jpg") && multipartFile.getSize() <= 204800) {
-                    System.out.println("------------FILL Check PASS------------");
                     String fileName = realPathDir + bookISBN + suffix;
-                    System.out.println(fileName);
                     File file = new File(fileName);
                     try {
-                        System.out.println("------------DO TRY------------");
                         multipartFile.transferTo(file);
                         int result = bookService.insertBook(book);
-                        System.out.println("DB Result----------------->>" + result);
                         if (result >0) {
                             map.put("status",true);
-                            System.out.println("------------ADD SUCCESS------------");
                         } else {
                             map.put("status",false);
                             map.put("errorMsg","SQL ERROR");

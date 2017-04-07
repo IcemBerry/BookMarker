@@ -14,11 +14,6 @@ function getData() {
             var bookList = json.bookList;
             initTable(bookList);
             document.getElementById("bookNum").innerHTML = bookList.length;
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('XMLHttpRequest:' + XMLHttpRequest.status +
-                '     textStatus:' + XMLHttpRequest.readyState +
-                '     textStatus:' + textStatus);
         }
     });
 }
@@ -77,7 +72,6 @@ window.operateEvents = {
             data: {"bookId": id},
             success: function (json) {
                 if (json.status) {
-                    alert("success!");
                     getData();
                 }
             }

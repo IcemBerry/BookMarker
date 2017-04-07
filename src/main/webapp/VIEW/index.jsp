@@ -7,8 +7,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>库</title>
+    <link rel="icon" href="${pageContext.request.contextPath}/assets/img/logo.ico" type="image/x-icon"/>
+    <title>我的书架</title>
 
     <!-- 通用样式表 -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -86,9 +86,7 @@
 
 <footer class="footer">
     <div class="container">
-        <p class="text-muted">Book Marker 由<a href="http://weibo.com/caricornus/home">@ICEM</a>设计、搭建及维护&emsp;
-            <span class="glyphicon glyphicon-copyright-mark" style="color: #555"></span>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
-        </p>
+        <p class="text-muted">暂时无用的页脚</p>
     </div>
 </footer>
 

@@ -15,11 +15,6 @@ function getData() {
             initNoteTable(noteDTOList);
 
             document.getElementById("noteNum").innerHTML = noteDTOList.length;
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('XMLHttpRequest:' + XMLHttpRequest.status +
-                '     textStatus:' + XMLHttpRequest.readyState +
-                '     textStatus:' + textStatus);
         }
     });
 }
@@ -80,14 +75,8 @@ window.operateEvents = {
             data: {"noteId": id},
             success: function (json) {
                 if (json.status) {
-                    alert("success");
                     getData();
                 }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('XMLHttpRequest:' + XMLHttpRequest.status +
-                    '     textStatus:' + XMLHttpRequest.readyState +
-                    '     textStatus:' + textStatus);
             }
         });
     }

@@ -20,9 +20,6 @@ function getBookList() {
                 optionstring += "<option value=\"" + bookList[j].bookId + "\" >" + bookList[j].bookName + "</option>";
             }
             $("#bookName").html(optionstring);
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('XMLHttpRequest:' + XMLHttpRequest.status + '     textStatus:' + XMLHttpRequest.readyState + '     textStatus:' + textStatus);
         }
     })
 }
@@ -36,19 +33,6 @@ function addNote() {
     $.ajax({
         type: 'POST',
         url: '/addNote',
-        data: {"bookId":bookId,"bookPage":bookPage,"bookNote":bookNote},
-        dataType: 'json',
-        success: function (json) {
-            if (json.status) {
-                alert('success!');
-            }
-            else {
-                alert('异常!');
-                alert(json.errorMsg);
-            }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('XMLHttpRequest:' + XMLHttpRequest.status + '     textStatus:' + XMLHttpRequest.readyState + '     textStatus:' + textStatus);
-        }
+        data: {"bookId":bookId,"bookPage":bookPage,"bookNote":bookNote}
     })
 }

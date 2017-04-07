@@ -14,11 +14,6 @@ function getData() {
             var bookList = json.bookList;
             initTable(bookList);
             document.getElementById("bookNum").innerHTML = bookList.length;
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('XMLHttpRequest:' + XMLHttpRequest.status +
-                '     textStatus:' + XMLHttpRequest.readyState +
-                '     textStatus:' + textStatus);
         }
     });
 }
@@ -81,11 +76,6 @@ window.operateEvents = {
                 if (json.status) {
                     getData();
                 }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('XMLHttpRequest:' + XMLHttpRequest.status +
-                    '     textStatus:' + XMLHttpRequest.readyState +
-                    '     textStatus:' + textStatus);
             }
         });
     }

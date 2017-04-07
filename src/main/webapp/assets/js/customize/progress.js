@@ -19,11 +19,6 @@ function getData() {
 
             document.getElementById("progressNum").innerHTML = progressDTOList.length;
             document.getElementById("unOpenNum").innerHTML = unOpenedBookList.length;
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert('XMLHttpRequest:' + XMLHttpRequest.status +
-                '     textStatus:' + XMLHttpRequest.readyState +
-                '     textStatus:' + textStatus);
         }
     });
 }
@@ -141,7 +136,6 @@ window.operateEvents = {
             data: {"bookId": id},
             success: function (json) {
                 if (json.status) {
-                    alert("success!");
                     getData();
                 }
             }

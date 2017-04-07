@@ -21,6 +21,6 @@ public class MainTest {
     public void testFindBookById(){
         mapper.BookMapper bookMapper = (mapper.BookMapper) applicationContext.getBean("bookMapper");
         Book book = bookMapper.selectByPrimaryKey(1);
-        System.out.println(book.getBookName());
+        System.out.println(book);
     }
 }
