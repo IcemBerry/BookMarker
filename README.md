@@ -16,6 +16,7 @@ Book Marker是一个用于管理阅读进度以及笔记的网站, 主体使用S
 ## 关于
 - 该网站由 [Icem](icemberry@gmail.com)设计、开发及维护。
 - 感谢开源框架作者们的伟大工作！
+- 注意：该项目以用于作者个人的毕业设计，请勿抄袭！
 
 ## 版权声明
 ![license](https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png "license")<br/>
