@@ -68,7 +68,7 @@
             <p>作者：Book Marker 由<a href="mailto:icemberry@gmail.com">@ICEM</a>设计、搭建及维护</p>
         </div>
         <div class="alert alert-success">
-            <p>该站点图标来自<a href="http://glyphicons.com/">Glyphicons</a> Halflings，感谢这些作者的伟大工作</p>
+            <p>该站点图标来自<a href="http://glyphicons.com/">Glyphicons Halflings</a>，感谢这些作者的伟大工作</p>
         </div>
         <div class="alert alert-warning">
             <p>版权声明：<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
