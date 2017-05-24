@@ -38,13 +38,13 @@
 
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="utf-8"/>
-        <property name="maxUploadSize" value="204800"/>
-        <property name="maxInMemorySize" value="40960"/>
+        <property name="maxUploadSize" value="20480000"/>
+        <property name="maxInMemorySize" value="4096000"/>
     </bean>
     <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <props>
-                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/toAddBook</prop>
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/addBook</prop>
             </props>
         </property>
     </bean>

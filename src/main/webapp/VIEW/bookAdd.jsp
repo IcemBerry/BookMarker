@@ -22,7 +22,7 @@
 
     <!-- 自定义内容 -->
     <link href="${pageContext.request.contextPath}/assets/css/marker.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/assets/js/customize/bookAdd.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/assets/js/customize/bookAdd.js"></script>--%>
 </head>
 
 <body>
@@ -76,13 +76,12 @@
             号的为必填项
         </div>
         <div class="well">
-            <%--action="/addBook" method="post"--%>
-            <form class="form-horizontal" id="bookAdd" enctype="multipart/form-data">
+            <form class="form-horizontal" enctype="multipart/form-data" action="/addBook" method="post">
                 <div class="form-group">
                     <label class="col-md-2 control-label">ISBN编号</label>
                     <div class="col-md-10">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="ISBN编号" id="bookISBN">
+                            <input type="text" class="form-control" placeholder="ISBN编号" id="bookISBN" name="bookISBN">
                             <div class="input-group-addon">
                                 <span class="glyphicon glyphicon-asterisk" style="color: #db4d6d"></span>
                             </div>
@@ -92,25 +91,25 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label">书名</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="bookName" placeholder="书名">
+                        <input type="text" class="form-control" id="bookName" placeholder="书名" name="bookName">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label">作者</label>
                     <div class="col-md-10">
-                        <input type="text" class="form-control" id="bookAuthor" placeholder="作者">
+                        <input type="text" class="form-control" id="bookAuthor" placeholder="作者" name="bookAuthor">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label">页数</label>
                     <div class="col-md-10">
-                        <input type="number" min="1" class="form-control" id="bookPage" placeholder="页数">
+                        <input type="number" min="1" class="form-control" id="bookPage" placeholder="页数" name="bookPage">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label">备注</label>
                     <div class="col-md-10">
-                        <textarea class="form-control" cols="60" rows="5" id="bookNote"></textarea>
+                        <textarea class="form-control" cols="60" rows="5" id="bookNote" name="bookNote"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -120,7 +119,11 @@
                         <p class="help-block">建议使用355*500的jpg图片，文件大小不能超过20K</p>
                     </div>
                 </div>
-                <button id="bookAddBtn" class="btn btn-success">添加</button>
+                <div class="form-group">
+                    <div class="col-md-10 col-md-offset-2">
+                        <input type="submit" class="btn btn-success" value="添加">
+                    </div>
+                </div>
             </form>
         </div>
     </div>

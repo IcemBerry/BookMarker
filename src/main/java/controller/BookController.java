@@ -72,58 +72,33 @@ public class BookController {
         return "redirect:login";
     }
 
-    @ResponseBody
     @RequestMapping(value = "/addBook", method = RequestMethod.POST)
-    public Map<String,Object> addBook(HttpSession session, HttpServletRequest request) {
-        Map<String, Object> map = new HashMap<String, Object>();
+    public String addBook(@RequestParam(value = "cover") MultipartFile file,
+                          @RequestParam(value = "bookISBN") String bookISBN,
+                          @RequestParam(value = "bookName") String bookName,
+                          @RequestParam(value = "bookNote") String bookNote,
+                          @RequestParam(value = "bookPage") int bookPage,
+                          @RequestParam(value = "bookAuthor") String bookAuthor,
+                          HttpSession session, HttpServletRequest request) {
         User user = (User) session.getAttribute("user");
         if (user != null) {
+            String fileName = this.fileUpload(file, request, bookISBN);
+            System.out.println(fileName+"-----upload DONE!");
+
             Book book = new Book();
-            MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-            MultipartFile multipartFile = multipartRequest.getFile("cover");
 
-            String bookISBN = multipartRequest.getParameter("bookISBN");
             book.setBookISBN(bookISBN);
+            book.setBookName(bookName);
+            book.setBookNote(bookNote);
+            book.setBookPage(bookPage);
+            book.setBookAuthor(bookAuthor);
 
-            book.setBookName(multipartRequest.getParameter("bookName"));
-            book.setBookNote(multipartRequest.getParameter("bookNote"));
-            book.setBookPage(Integer.parseInt(multipartRequest.getParameter("bookPage")));
-            book.setBookAuthor(multipartRequest.getParameter("bookAuthor"));
+            bookService.insertBook(book);
 
-            String realPathDir = request.getSession().getServletContext().getRealPath("/assets/cover/");
-            String suffix = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf("."));
-            if (bookISBN != null && !bookISBN.trim().equals("")){
-                if (suffix.equals(".jpg") && multipartFile.getSize() <= 204800) {
-                    String fileName = realPathDir + bookISBN + suffix;
-                    File file = new File(fileName);
-                    try {
-                        multipartFile.transferTo(file);
-                        int result = bookService.insertBook(book);
-                        if (result >0) {
-                            map.put("status",true);
-                        } else {
-                            map.put("status",false);
-                            map.put("errorMsg","SQL ERROR");
-                        }
-                    } catch (IllegalStateException e) {
-                        e.printStackTrace();
-                        map.put("status",false);
-                        map.put("errorMsg","IllegalStateException");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        map.put("status",false);
-                        map.put("errorMsg","IOException");
-                    }
-                } else {
-                    map.put("status",false);
-                    map.put("errorMsg","请检查上传文件是否符合要求！");
-                }
-            }else {
-                map.put("status",false);
-                map.put("errorMsg","ISBN编号为必填项！");
-            }
+            return "bookLibrary";
         }
-        return map;
+
+        return "redirect:login";
     }
 
     @RequestMapping(value = "/toBookLibrary", method = RequestMethod.GET)
@@ -148,5 +123,21 @@ public class BookController {
         }
         map.put("bookList", bookList);
         return map;
+    }
+
+    private String fileUpload(MultipartFile file, HttpServletRequest request, String bookISBN) {
+        String path = request.getSession().getServletContext().getRealPath("/assets/cover/");
+        String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        String fileName = bookISBN + suffix;
+        File realFile = new File(path, fileName);
+        if (!realFile.exists()) {
+            realFile.mkdirs();
+        }
+        try {
+            file.transferTo(realFile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return fileName;
     }
 }
